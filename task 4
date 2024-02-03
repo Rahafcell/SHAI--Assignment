@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your dataset
+df = pd.read_csv('/content/Salaries.csv')
+df.head()
+ #4  Basic Data Visualization
+
+plt.hist(df['BasePay'])
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.title('Distribut Salaries')
+plt.show()
+# Get the number of employees in each department
+nums_employee_per_department = df['JobTitle'].value_counts().head(10)
+# Create a pie chart
+# Create a pie chart for the proportion of employees in different departments
+plt.pie(nums_employee_per_department.value_counts(), labels=nums_employee_per_department.index,autopct='%1.1f%%',startangle=110)
+plt.title("Proportion of Employees in Different Departments")
+plt.show()
