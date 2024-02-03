@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your dataset
+df = pd.read_csv('/content/Salaries.csv')
+df.head()
+#6   Simple Correlation Analysis
+
+BasePay= 'BasePay'
+TotalPay= 'TotalPay'
+
+# Correlation analysis
+correlation = df[[BasePay, TotalPay]].corr()
+sns.scatterplot(x=df[BasePay], y=df[TotalPay])
+plt.title(f'Scatter Plot: {BasePay} vs {TotalPay}')
+plt.xlabel(BasePay)
+plt.ylabel(TotalPay)
+plt.show()
+
+# Display the correlation matrix
+print("Correlation Matrix:")
+print(correlation)
