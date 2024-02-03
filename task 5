@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your dataset
+df = pd.read_csv('/content/Salaries.csv')
+df.head()
+
+#  5 Group the data
+grouped_data = df.groupby("Id")
+
+# Calculate summary statistics for each group, including mean salary
+department_stats = grouped_data.agg({
+    "BasePay": ["mean", "min", "max"],
+    "OtherPay": ["mean", "min", "max"],
+    "TotalPay": ["mean", "min", "max"],
+    "TotalPayBenefits": ["mean", "min", "max"],
+    "Year":["mean", "min", "max"],
+})
+print(department_stats)
+
+# Compare the average salaries across different group
+# Compare the average salaries across different groups
+print("Average salary by department:")
+for department, stats in department_stats.iterrows():
+    print(f"{department}: ${stats['TotalPay']['mean']:.2f}")
