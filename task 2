@@ -1,0 +1,33 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load your dataset
+df = pd.read_csv('/content/Salaries.csv')
+df.head()
+# 2   Descriptive Statistics
+
+# Descriptive statistics
+statistics = df['BasePay'].describe()
+
+# Mode
+mode_value = df['BasePay'].mode().values[0]
+
+# Range
+salary_range = df['BasePay'].max() - df['BasePay'].min()
+
+# Standard Deviation
+std_deviation = df['BasePay'].std()
+
+# Print the results
+print("Descriptive Statistics:")
+print(statistics)
+
+print("\nMode:")
+print(mode_value)
+
+print("\nRange of Salaries:")
+print(salary_range)
+
+print("\nStandard Deviation:")
+print(std_deviation)
